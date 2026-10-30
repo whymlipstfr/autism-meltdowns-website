@@ -27,8 +27,8 @@
     <nav class="menu" aria-label="Main navigation">
       <div class="menu-list">
         <a class="menu-link" href="#definition">Learn More about Autism and Meltdowns</a>
-        <a class="menu-link" href="index.html#resource-cards">Train Scenario Activity with Emotion Cards</a>
-        <a class="menu-link" href="index.html#resource-support">What Else Can You Do?</a>
+        <a class="menu-link" href="https://emotion-cards-carousel.vercel.app/">Train Scenario Activity with Emotion Cards</a>
+        <a class="menu-link" href="what-else.html">What Else Can You Do?</a>
       </div>
       <a class="menu-button" href="index.html#resources">Learn More</a>
     </nav>
@@ -52,7 +52,7 @@
     <section class="asd-meltdown-hero" aria-labelledby="meltdowns-title">
       <h2 id="meltdowns-title">What are Meltdowns?</h2>
       <div class="asd-meltdown-art-window">
-        <img src="assets/meltdown-illustration.png" alt="A pink rabbit standing inside a train beside another rabbit wearing headphones">
+        <img src="assets/what-are-meltdowns.png" alt="A pink rabbit sitting calmly against a hand-drawn yellow background">
       </div>
     </section>
 
@@ -63,7 +63,7 @@
 
     <section class="asd-copy asd-tantrum reveal" aria-labelledby="tantrum-title">
       <h2 id="tantrum-title">Isn’t that a tantrum?</h2>
-      <p>Nope. Tantrums happen deliberately, when we know what we want to obtain but are not able to obtain it. Meltdowns, on the other hand, happen when a person with ASD becomes overwhelmed with sensory overload, losing control of their behaviour and sense of reasoning.</p>
+      <p>Nope. Tantrums happen deliberately, when we know what we want to obtain but are not able to obtain it. Meltdowns, on the other hand, happen when a person with ASD becomes overwhelmed with an occurrence such as sensory overload, losing control of their behaviour and sense of reasoning.</p>
     </section>
 
     <section class="asd-phases-hero" aria-labelledby="phases-title">
@@ -72,15 +72,23 @@
       <img src="assets/meltdown-phases.png" alt="A diagram showing the phases of a meltdown: Calm, Triggers, Agitation, Meltdown, Re-Grouping, and Starting Over">
     </section>
 
-    <section class="asd-copy asd-phase-list reveal" aria-labelledby="phase-list-title">
+    <section class="asd-phase-carousel" aria-labelledby="phase-list-title">
       <h2 id="phase-list-title">The Different Phases</h2>
-      <div class="phase-list">
-        <p><strong>Calm</strong> - Individual is regulated and feels safe. Individual is able to communicate effectively.</p>
-        <p><strong>Triggers</strong> - Identifiable stimuli (e.g. sudden changes in routine) begin to overwhelm individual.</p>
-        <p><strong>Agitation</strong> - Signs of distress become apparent, little outbursts can occur.</p>
-        <p><strong>Meltdown</strong> - Nothing is going in, individual is trying to cut out all sensory input.</p>
-        <p><strong>Re-Grouping</strong> - Individual may be non-responsive as they need time to recover.</p>
-        <p><strong>Starting Over</strong> - Individual is now ready to re-engage in social interactions, returning to a calm state.</p>
+      <div class="phase-carousel" data-phase-carousel data-active-slide="1">
+        <button class="phase-arrow phase-arrow-previous" type="button" aria-label="Show previous phase" data-phase-direction="-1"><span></span></button>
+        <article class="phase-card" data-phase-index="1" aria-live="polite" aria-atomic="true">
+          <h3 class="phase-card-title" data-phase-title>#2: Triggers</h3>
+          <p class="phase-card-description" data-phase-description>Identifiable stimuli (e.g. sudden changes in routine) begin to overwhelm individual.</p>
+        </article>
+        <button class="phase-arrow phase-arrow-next" type="button" aria-label="Show next phase" data-phase-direction="1"><span></span></button>
+        <div class="phase-dots" aria-label="Choose a meltdown phase">
+          <button type="button" aria-label="Phase 1: Calm" data-phase-dot="0"></button>
+          <button type="button" aria-label="Phase 2: Triggers" data-phase-dot="1" aria-current="true"></button>
+          <button type="button" aria-label="Phase 3: Agitation" data-phase-dot="2"></button>
+          <button type="button" aria-label="Phase 4: Meltdown" data-phase-dot="3"></button>
+          <button type="button" aria-label="Phase 5: Re-Grouping" data-phase-dot="4"></button>
+          <button type="button" aria-label="Phase 6: Starting Over" data-phase-dot="5"></button>
+        </div>
       </div>
     </section>
   </main>
@@ -96,5 +104,41 @@
       </div>
     </div>
   </footer>
+  <script>
+    (() => {
+      const carousel = document.querySelector('[data-phase-carousel]');
+      if (!carousel) return;
+
+      const phases = [
+        ['Calm', 'Individual is regulated and feels safe. Individual is able to communicate effectively.'],
+        ['Triggers', 'Identifiable stimuli (e.g. sudden changes in routine) begin to overwhelm individual.'],
+        ['Agitation', 'Signs of distress become apparent and little outbursts can occur.'],
+        ['Meltdown', 'Nothing is going in, individual is trying to cut out all sensory input.'],
+        ['Re-Grouping', 'Individual may be non-responsive as they need time to recover.'],
+        ['Starting Over', 'Individual is now ready to re-engage in social interactions, returning to a calm state.']
+      ];
+      const title = carousel.querySelector('[data-phase-title]');
+      const description = carousel.querySelector('[data-phase-description]');
+      const dots = [...carousel.querySelectorAll('[data-phase-dot]')];
+      let activeSlide = Number(carousel.dataset.activeSlide) || 0;
+
+      const showPhase = (index) => {
+        activeSlide = (index + phases.length) % phases.length;
+        carousel.dataset.activeSlide = String(activeSlide);
+        carousel.querySelector('.phase-card').dataset.phaseIndex = String(activeSlide);
+        title.textContent = `#${activeSlide + 1}: ${phases[activeSlide][0]}`;
+        description.textContent = phases[activeSlide][1];
+        dots.forEach((dot, dotIndex) => {
+          if (dotIndex === activeSlide) dot.setAttribute('aria-current', 'true');
+          else dot.removeAttribute('aria-current');
+        });
+      };
+
+      carousel.querySelectorAll('[data-phase-direction]').forEach((button) => {
+        button.addEventListener('click', () => showPhase(activeSlide + Number(button.dataset.phaseDirection)));
+      });
+      dots.forEach((dot) => dot.addEventListener('click', () => showPhase(Number(dot.dataset.phaseDot))));
+    })();
+  </script>
 </body>
 </html>
