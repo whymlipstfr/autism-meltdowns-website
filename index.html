@@ -18,10 +18,13 @@
       <a class="brand" href="#home" aria-label="Home">
         <img src="assets/bunny-icon.png" alt="">
       </a>
-      <label class="menu-toggle" for="menu-state" aria-label="Open navigation">
-        <img src="assets/menu-icon.svg" alt="">
-      </label>
-      <label class="menu-close" for="menu-state" aria-label="Close navigation"><span></span><span></span></label>
+      <div class="nav-actions">
+        <span class="colour-mode-label" aria-hidden="true">Vivid</span>
+        <button class="colour-mode-toggle" type="button" role="switch" aria-label="Colours mode: Vivid" title="Vivid" aria-checked="false">
+        </button>
+        <label class="menu-toggle" for="menu-state" aria-label="Open navigation"><img src="assets/menu-icon.svg" alt=""></label>
+        <label class="menu-close" for="menu-state" aria-label="Close navigation"><span></span><span></span></label>
+      </div>
     </div>
 
     <nav class="menu" aria-label="Main navigation">
@@ -30,7 +33,6 @@
         <a class="menu-link" href="https://emotion-cards-carousel.vercel.app/">Train Scenario Activity with Emotion Cards</a>
         <a class="menu-link" href="what-else.html">What Else Can You Do?</a>
       </div>
-      <button class="menu-button" type="button">Learn More</button>
     </nav>
   </header>
 
@@ -122,5 +124,8 @@
       </div>
     </div>
   </footer>
+  <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+  <script src="colour-mode.js"></script>
+  <script src="scroll-progress.js"></script>
 </body>
 </html>
