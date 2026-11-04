@@ -38,7 +38,7 @@
 
   <main>
     <section class="hero" id="page-top" aria-labelledby="page-title">
-      <h1 id="page-title">Autism<br>Meltdowns</h1>
+      <h1 id="page-title">Understanding Autism and Meltdowns</h1>
       <div class="hero-art-frame">
         <img class="hero-art" src="assets/hero-art.png" alt="Three colorful rabbits riding on a train">
       </div>
@@ -47,23 +47,36 @@
     <section class="introduction reveal" id="introduction" aria-labelledby="intro-title">
       <h2 id="intro-title">Introduction</h2>
       <div class="intro-copy">
-        <p>We are Year 2 students from the Design for Social Futures (DSF) programme at LASALLE College of the Arts. To support the mobility rights of autistic and neurodivergent individuals, we have developed the Calm Cabin, a space designed to make public transportation more accessible and comfortable for everyone.</p>
-        <p>This website introduces meltdowns, something that people with autism face as well as a guide on how to use emotion cards. It is designed to support sensory needs and help make public transportation more welcoming.</p>
-        <p>We hope to create a world where everyone feels like they belong and are welcomed, and can travel on public transportation with dignity and ease.</p>
+        <p>We are Year 2 students from the Design for Social Futures (DSF) programme at LASALLE College of the Arts. To support the mobility experiences of autistic and neurodivergent individuals, we have designed the Calm Cabin - a space intended to make public transportation more accessible and comfortable for everyone.</p>
+        <p>This website explores what it means to have a meltdown, something that people with autism experience as well as a guide on how to use emotion cards. It is designed to support sensory needs and help make public transportation more comfortable for people with ASD, as well as to spread awareness.</p>
       </div>
+    </section>
+
+    <section class="definition-section" aria-labelledby="definition-title">
+      <h2 id="definition-title">Definition of Autism</h2>
+      <p class="definition-copy">In Singapore, autism is defined as a neurodevelopmental condition that affects communication, social interaction and behaviour, with support needs varying across individuals. It can present differently from person to person, with each individual requiring different levels of support in daily living, communication or learning.</p>
+      <p class="definition-reference">Reference:<br>SG Enable. “Disability in Singapore - Types, Statistics, Support | SG Enable,” n.d. https://www.sgenable.sg/about-us/our-impact/disability-in-singapore.</p>
     </section>
 
     <section class="cabin-section" id="calm-cabin" aria-labelledby="cabin-title">
       <div class="cabin-copy reveal">
         <h2 id="cabin-title">About the Calm Cabin</h2>
-        <div class="cabin-description">
-          <p>Calm Cabin is designed not only for people with ASD but also for people who need to distance from the noise and overstimulating stimuli in the train. The cabin itself is separated from any other cabins to block the noise and visual elements that might lead people to stress.</p>
-          <p>Earthy muted tones are applied for visual comfort; other elements such as acoustic padding and squishy handles are implemented to help commuters redirect their attention away from triggers.</p>
-          <p>One of the most important things in this cabin is the lava lamp display, which helps to gradually focus on slow and calming visuals in order to avoid other stimuli such as vivid coloured advertisements. For the same reason, this cabin is ad-free. When the train is close to the station, the screen slowly indicates key information about the journey, such as train station names and the amount of time to reach the next station.</p>
+        <div class="cabin-description" aria-live="polite" aria-atomic="true">
+          <h3 class="cabin-feature-title" id="cabin-feature-title">Feature: Sliding Door</h3>
+          <p class="cabin-feature-copy" id="cabin-feature-copy">Calm Cabin is designed not only for people with ASD but also for people who need to distance from the noise and overstimulating stimuli in the train. The cabin itself is separated from any other cabins to block the noise and visual elements that might lead people to stress.</p>
         </div>
       </div>
 
-      <img class="cabin-image reveal" src="assets/cabin-image.png" alt="Illustration of a calming train cabin with a rabbit passenger">
+      <div class="cabin-carousel reveal" role="region" aria-roledescription="carousel" aria-label="Calm Cabin feature carousel">
+        <div class="cabin-carousel-viewport">
+          <img class="cabin-carousel-image" id="cabin-carousel-image" src="assets/calm-cabin-door.jpg" alt="Calm Cabin sliding door">
+        </div>
+        <div class="cabin-carousel-dots" role="group" aria-label="Choose a Calm Cabin feature">
+          <button class="cabin-carousel-dot" type="button" aria-label="Show Feature: Sliding Door" aria-current="true"><img src="assets/carousel-dot-pink.svg" alt=""></button>
+          <button class="cabin-carousel-dot" type="button" aria-label="Show Feature: Tactile Handles and Poles" aria-current="false"><img src="assets/carousel-dot-white.svg" alt=""></button>
+          <button class="cabin-carousel-dot" type="button" aria-label="Show Feature: Lava Lamp Display" aria-current="false"><img src="assets/carousel-dot-white.svg" alt=""></button>
+        </div>
+      </div>
 
       <div class="resources" id="resources" aria-label="Resources">
         <article class="resource reveal" id="resource-autism">
@@ -96,7 +109,7 @@
     <section class="connect reveal" id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title">Connect with us</h2>
       <p>Did this project strike a chord with you? Share your reflections with us, we would love to hear from you!</p>
-      <button class="button button-dark" type="button">Learn More <img src="assets/arrow-icon.svg" alt=""></button>
+      <a class="button button-dark" href="https://asdemotions.straw.page/">Learn More <img src="assets/arrow-icon.svg" alt=""></a>
     </section>
 
     <section class="thanks" aria-labelledby="thanks-title">
@@ -108,7 +121,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer home-footer">
     <nav class="footer-nav" aria-label="Footer navigation">
       <a href="#introduction">Introduction</a>
       <a href="#calm-cabin">About the Calm Cabin</a>
@@ -127,5 +140,6 @@
   <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
   <script src="colour-mode.js"></script>
   <script src="scroll-progress.js"></script>
+  <script src="cabin-carousel.js"></script>
 </body>
 </html>
