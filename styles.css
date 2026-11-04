@@ -28,11 +28,19 @@ body {
   margin: 0;
   max-width: 375px;
   margin-inline: auto;
+  border-inline: 0;
   background: var(--white);
   color: var(--ink);
   font-family: var(--body);
   font-size: 16px;
   line-height: 1.4;
+}
+
+/* Keep the mobile canvas clean; show its frame only when there is extra room. */
+@media (min-width: 768px) {
+  body {
+    border-inline: 1px solid var(--line);
+  }
 }
 
 button, input { font: inherit; }
@@ -393,8 +401,7 @@ h2 { font-size: 40px; line-height: 1; letter-spacing: .01em; }
 .menu-link:focus-visible,
 .button:focus-visible,
 .footer-nav a:focus-visible,
-.brand:focus-visible,
-.footer-brand:focus-visible {
+.brand:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
