@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Monomaniac+One&family=Space+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="support-page" id="page-top">
+<body class="support-page drawer-page" id="page-top">
   <header class="site-header" id="home">
     <input class="menu-state" type="checkbox" id="menu-state" aria-label="Toggle navigation menu">
     <div class="nav-top">
@@ -77,8 +77,25 @@
   <footer class="site-footer support-footer">
     <div class="footer-bottom"><div class="footer-brand" aria-hidden="true"><img src="assets/bunny-icon.png" alt=""></div><div class="credits"><p>LASALLE College of the Arts<br>Design for Social Futures</p><p>Designed by:<br>Yasmin Imanina Binte Dzul Fazli<br>Ryu Taekyung<br>Kyra Leong</p></div></div>
   </footer>
+  <section class="train-drawer" id="train-drawer" aria-label="Train Scenario Activity" data-open="false">
+    <button class="train-drawer-toggle" type="button" aria-expanded="false" aria-controls="train-drawer-content">
+      <span class="train-drawer-closed-view" aria-hidden="true">
+        <span class="train-drawer-handle"></span>
+        <img class="train-drawer-closed-art" src="assets/train-scenario-menu-art.png" alt="">
+        <span class="train-drawer-closed-title">Train Scenario Activity</span>
+      </span>
+      <span class="train-drawer-open-handle" aria-hidden="true"><span class="train-drawer-handle"></span></span>
+      <span class="visually-hidden">Open Train Scenario Activity menu</span>
+    </button>
+    <div class="train-drawer-content" id="train-drawer-content" aria-hidden="true" inert>
+      <img class="train-drawer-open-art" src="assets/train-scenario-menu-art.png" alt="">
+      <p class="train-drawer-message">Try out our<br>Train Scenario Activity with Emotion Cards!</p>
+      <a class="train-drawer-cta" href="https://emotion-cards-carousel.vercel.app/">Let’s Play! <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
   <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
   <script src="colour-mode.js"></script>
   <script src="scroll-progress.js"></script>
+  <script src="train-drawer.js"></script>
 </body>
 </html>

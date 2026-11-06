@@ -17,7 +17,7 @@
     },
     {
       title: "Feature: Lava Lamp Display",
-      copy: "One of the most important things in this cabin is the lava lamp display, which helps to gradually focus on slow and calming visuals in order to avoid other stimuli such as vivid coloured advertisements. For the same reason, this cabin is ad-free. When the train is close to the station, the screen slowly indicates key information about the journey, such as train station names and the amount of time to reach the next station.",
+      copy: "This is the lava lamp display, which helps to gradually focus on slow and calming visuals in order to avoid other stimuli such as vivid coloured advertisements. For the same reason, this cabin is ad-free.",
       image: "assets/calm-cabin-lava-lamp.png",
       alt: "Calm Cabin lava lamp display",
     },
@@ -30,26 +30,41 @@
   let activeIndex = 0;
   let touchStart = null;
 
+  function updateDots() {
+    dots.forEach((dot) => {
+      const isActive = Number(dot.dataset.slideIndex) === activeIndex;
+      dot.classList.toggle("is-active", isActive);
+      dot.setAttribute("aria-current", String(isActive));
+      dot.setAttribute("aria-pressed", String(isActive));
+      const indicator = dot.querySelector("img");
+      if (indicator) {
+        indicator.src = isActive
+          ? "assets/carousel-dot-pink.svg"
+          : "assets/carousel-dot-white.svg";
+      }
+    });
+  }
+
   function showSlide(index) {
-    activeIndex = (index + slides.length) % slides.length;
+    const nextIndex = (index + slides.length) % slides.length;
+    if (nextIndex === activeIndex) return;
+
+    activeIndex = nextIndex;
     const slide = slides[activeIndex];
 
     title.textContent = slide.title;
     copy.textContent = slide.copy;
     image.src = slide.image;
     image.alt = slide.alt;
-
-    dots.forEach((dot, dotIndex) => {
-      const isActive = dotIndex === activeIndex;
-      dot.setAttribute("aria-current", String(isActive));
-      dot.querySelector("img").src = isActive
-        ? "assets/carousel-dot-pink.svg"
-        : "assets/carousel-dot-white.svg";
-    });
+    updateDots();
   }
 
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => showSlide(index));
+  updateDots();
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      showSlide(Number(dot.dataset.slideIndex));
+    });
   });
 
   const viewport = carousel.querySelector(".cabin-carousel-viewport");
