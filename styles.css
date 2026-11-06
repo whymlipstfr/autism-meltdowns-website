@@ -205,6 +205,28 @@ a { color: inherit; }
 .menu-link { min-height: 0; padding: 30px 0; display: flex; align-items: center; border-top: 1px solid var(--line); color: var(--green); text-decoration: none; font-size: 14px; font-weight: 700; transition: color .18s ease; }
 .menu-link[href="what-else.html"] { border-bottom: 1px solid var(--line); }
 .menu-link:active { color: var(--surface); }
+.back-home-row {
+  width: 100%;
+  height: 45px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  background: var(--green);
+}
+.back-home-link {
+  display: inline-flex;
+  align-items: baseline;
+  color: var(--white);
+  font: 700 12px/1.4 var(--mono);
+  letter-spacing: -.005em;
+  text-decoration: none;
+}
+.back-home-arrow {
+  margin-right: 4px;
+  font: 700 12px/1.4 var(--body);
+}
+.back-home-text { text-decoration: underline; text-underline-offset: 1px; }
+.back-home-link:active { color: var(--accent); }
 
 .button {
   min-height: 46px;
@@ -237,7 +259,6 @@ a { color: inherit; }
   overflow: hidden;
   background: var(--green);
 }
-
 .hero h1 {
   width: 100%;
   margin: 0;
@@ -296,7 +317,7 @@ h2 { font-size: 40px; line-height: 1; letter-spacing: .01em; }
 }
 .definition-section h2 { color: var(--green); }
 .definition-copy { max-width: 760px; margin: 0; font-size: 16px; line-height: 1.4; letter-spacing: -.08px; }
-.definition-reference { max-width: 760px; margin: 0; font-size: 10px; font-style: italic; font-weight: 300; line-height: 1.4; letter-spacing: -.05px; }
+.definition-reference { max-width: 760px; margin: 0; font-size: 12px; font-style: italic; font-weight: 300; line-height: 1.4; letter-spacing: -.05px; }
 .cabin-section {
   padding: 0 16px 100px;
   background: var(--green);
@@ -571,13 +592,18 @@ h2 { font-size: 40px; line-height: 1; letter-spacing: .01em; }
   .menu-link:hover { color: var(--accent); }
   .button-accent:hover { background: var(--green); }
   .button-dark:hover { background: var(--surface); }
-  .footer-nav a:hover { color: var(--white); }
+  .footer-nav a:hover,
+  .support-return-link:hover,
+  .asd-return-link:hover { color: var(--white); }
 }
 
 .menu-close:focus-visible,
 .menu-link:focus-visible,
 .button:focus-visible,
+.back-home-link:focus-visible,
 .footer-nav a:focus-visible,
+.support-return-link:focus-visible,
+.asd-return-link:focus-visible,
 .brand:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
@@ -599,7 +625,7 @@ h2 { font-size: 40px; line-height: 1; letter-spacing: .01em; }
 /* What Else Can You Do? — Figma mobile frame */
 body.support-page { padding-top: 78px; background: var(--white); color: var(--white); }
 .support-guidance { width: 100%; padding: 60px 32px 80px; }
-.support-for-self { background: var(--green); }
+.support-for-self { padding-top: 0; background: var(--green); }
 .support-for-others { background: var(--accent); color: var(--green); }
 .support-intro { display: flex; flex-direction: column; gap: 40px; margin-bottom: 20px; }
 .support-intro h1 { margin: 0; font: 400 60px/.9 var(--display); letter-spacing: .01em; overflow-wrap: anywhere; }
@@ -608,7 +634,7 @@ body.support-page { padding-top: 78px; background: var(--white); color: var(--wh
 .support-intro p { margin: 0; font: 400 16px/1.4 var(--body); letter-spacing: -.005em; }
 .support-list { display: flex; flex-direction: column; gap: 0; margin: 0; padding: 0; list-style: none; }
 .support-step { min-width: 0; }
-.support-step > img, .support-image-pair img { display: block; width: 100%; height: 217px; object-fit: cover; }
+.support-step > img, .support-image-pair img { display: block; width: 100%; height: 217px; border-radius: 30px; object-fit: cover; }
 .support-image-pair { display: flex; flex-direction: column; gap: 11px; }
 .support-step-copy { display: flex; align-items: flex-start; gap: 20px; padding: 20px 0; font: 400 16px/1.4 var(--body); letter-spacing: -.005em; }
 .support-number { flex: 0 0 auto; font-weight: 700; }
@@ -619,6 +645,29 @@ body.support-page { padding-top: 78px; background: var(--white); color: var(--wh
 .support-caption { font: 400 12px/1.4 var(--mono); letter-spacing: -.01em; }
 .support-caption p + p { margin-top: 3px; }
 .support-caption ul { margin: 0; padding-left: 18px; }
+.support-reference { margin: 0; color: inherit; font: italic 300 12px/1.4 var(--body); letter-spacing: -.06px; }
+.support-reference a { color: inherit; }
+.support-return-nav {
+  min-height: 168px;
+  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--green);
+}
+.support-return-link {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -.35px;
+  text-decoration: none;
+  transition: color .18s ease;
+}
+.support-return-link:active { color: var(--white); }
 .support-footer { min-height: 186px; height: 186px; border-top: 0; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -627,7 +676,7 @@ body.support-page { padding-top: 78px; background: var(--white); color: var(--wh
 }
 
 /* Learn More about Autism and Meltdowns page */
-body.asd-page { background: var(--white); color: var(--green); }
+body.asd-page { padding-top: 78px; background: var(--white); color: var(--green); }
 .asd-hero {
   width: 100%;
   height: 536px;
@@ -691,8 +740,8 @@ body.asd-page { background: var(--white); color: var(--green); }
 .asd-definition { min-height: 296px; }
 .asd-meltdown-hero {
   width: 100%;
-  height: 427px;
-  padding: 50px 6px 0;
+  height: 382px;
+  padding: 5px 6px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -727,8 +776,32 @@ body.asd-page { background: var(--white); color: var(--green); }
   object-fit: cover;
   border-radius: 30px 30px 0 0;
 }
-.asd-what-are-they { min-height: 348px; border-bottom: 1px solid var(--line); }
+.asd-what-are-they {
+  width: min(100%, 375px);
+  height: 297px;
+  min-height: 297px;
+  padding: 50px 16px 42px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--line);
+}
 .asd-tantrum { min-height: 310px; }
+.asd-tantrum-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.asd-tantrum-copy p { margin: 0; }
+.asd-reference {
+  color: #000;
+  font: italic 300 12px/1.4 var(--body);
+  letter-spacing: -.004em;
+}
+.asd-reference p {
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+}
+.asd-reference a { color: inherit; }
 .asd-phases-hero {
   width: 100%;
   min-height: 461px;
@@ -878,6 +951,25 @@ body.asd-page { background: var(--white); color: var(--green); }
   background: var(--green);
 }
 .asd-footer .footer-bottom { min-height: 129px; }
+.asd-return-nav {
+  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  background: var(--green);
+}
+.asd-return-link {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -.35px;
+  text-decoration: none;
+  transition: color .18s ease;
+}
+.asd-return-link:active { color: var(--white); }
 
 :root[data-colour-mode="calm"] img { filter: saturate(.65); }
 :root[data-colour-mode="calm"] .menu-toggle img { filter: saturate(.45); }
