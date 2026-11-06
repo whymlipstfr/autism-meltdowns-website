@@ -22,11 +22,14 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
+  width: 100%;
   margin: 0;
-  max-width: 375px;
+  max-width: none;
   margin-inline: auto;
   border-inline: 0;
   background: var(--white);
@@ -36,11 +39,9 @@ body {
   line-height: 1.4;
 }
 
-/* Keep the mobile canvas clean; show its frame only when there is extra room. */
+/* Keep the mobile canvas centered on wider tablet and desktop screens. */
 @media (min-width: 768px) {
-  body {
-    border-inline: 1px solid var(--line);
-  }
+  body { max-width: 375px; }
 }
 
 button, input { font: inherit; }
@@ -1008,4 +1009,13 @@ body.asd-page { padding-top: 78px; background: var(--white); color: var(--green)
 :root[data-colour-mode="calm"] .button-accent { color: var(--green); }
 :root[data-colour-mode="calm"] .button-accent:hover,
 :root[data-colour-mode="calm"] .button-accent:active { color: var(--white); }
+
+@media (max-width: 767px) {
+  .site-header,
+  .scroll-progress,
+  .train-drawer,
+  .page-bottom-fill { width: 100%; }
+  .asd-what-are-they { width: 100%; }
+  .phase-diagram { max-width: 375px; margin-inline: auto; }
+}
 
