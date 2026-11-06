@@ -673,6 +673,7 @@ body.support-page { padding-top: 78px; background: var(--white); color: var(--wh
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; }
+  .phase-marker { transition: none !important; }
 }
 
 /* Learn More about Autism and Meltdowns page */
@@ -821,7 +822,36 @@ body.asd-page { padding-top: 78px; background: var(--white); color: var(--green)
   font: 400 16px/1.4 var(--body);
   letter-spacing: -.005em;
 }
-.asd-phases-hero > img { width: 100%; height: 129px; margin-top: auto; object-fit: cover; }
+.phase-diagram {
+  position: relative;
+  width: 100%;
+  height: 129px;
+  flex: 0 0 129px;
+  margin-top: auto;
+}
+.phase-diagram > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.phase-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  transform: translate3d(var(--marker-x, 62px), var(--marker-y, 94px), 0);
+  transition: transform .55s cubic-bezier(.22, .61, .36, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+.phase-marker > img { display: block; }
+@supports (offset-path: path("M 0 0 L 1 1")) {
+  .phase-marker {
+    transform: none;
+    offset-path: path("M 70 102 C 88 97, 101 94, 112 74 C 127 54, 147 62, 166 51 C 174 45, 170 31, 182 34 C 199 46, 219 56, 238 55 C 252 55, 251 78, 266 97");
+    offset-anchor: center;
+    offset-rotate: 0deg;
+    offset-distance: var(--marker-distance, 0%);
+    transition: offset-distance .55s cubic-bezier(.22, .61, .36, 1);
+  }
+}
 .asd-phase-carousel {
   width: 100%;
   min-height: 424px;
