@@ -634,6 +634,7 @@ body.support-page { padding-top: 78px; background: var(--white); color: var(--wh
 .support-step { min-width: 0; }
 .support-step > img, .support-image-pair img { display: block; width: 100%; height: 217px; border-radius: 30px; object-fit: cover; }
 .support-image-pair { display: flex; flex-direction: column; gap: 11px; }
+.support-image-pair-dots { display: none; }
 .support-step-copy { display: flex; align-items: flex-start; gap: 20px; padding: 20px 0; font: 400 16px/1.4 var(--body); letter-spacing: -.005em; }
 .support-number { flex: 0 0 auto; font-weight: 700; }
 .support-step-copy > div { min-width: 0; flex: 1; }
@@ -1127,6 +1128,18 @@ body.asd-page { padding-top: 78px; background: var(--white); color: var(--green)
   .definition-copy,
   .definition-reference { max-width: 1100px; }
   .definition-reference { font-size: 14px; }
+  .definition-reference,
+  .support-reference,
+  .asd-reference {
+    max-width: 1100px;
+    font-family: var(--body);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: -.05px;
+  }
+  .asd-reference { color: inherit; }
 
   .cabin-section {
     min-height: 100svh;
@@ -1217,6 +1230,87 @@ body.asd-page { padding-top: 78px; background: var(--white); color: var(--green)
   .support-intro { gap: clamp(28px, 4vw, 52px); margin-bottom: clamp(32px, 5vw, 68px); }
   .support-intro h1 { font-size: clamp(58px, 7vw, 104px); }
   .support-intro p { max-width: 1100px; font-size: clamp(17px, 1.4vw, 20px); }
+  .support-for-self { padding-top: clamp(36px, 5vw, 72px); }
+  .support-for-self .support-intro {
+    gap: clamp(16px, 2vw, 28px);
+    margin-bottom: calc(clamp(40px, 5vw, 72px) - 10px);
+  }
+  .support-for-self .support-intro h1 { font-size: clamp(42px, 5vw, 76px); }
+  .support-for-self .support-intro p { max-width: none; font-size: clamp(18px, 1.5vw, 24px); }
+  .support-for-self .support-list {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(24px, 3.5vw, 60px);
+  }
+  .support-for-self .support-step { display: block; }
+  .support-for-self .support-step > img,
+  .support-for-self .support-image-pair > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2388 / 1668;
+    flex: 0 0 auto;
+    border-radius: 30px;
+  }
+  .support-for-self .support-step:not(:nth-child(2)) > img { margin-bottom: 30px; }
+  .support-for-self .support-step-copy { gap: clamp(12px, 1.6vw, 20px); padding: 24px 0 0; }
+  .support-for-self .support-number { font-size: clamp(20px, 1.7vw, 28px); line-height: 1.25; }
+  .support-for-self .support-step-copy h2 { margin: 0 0 10px; font-size: clamp(18px, 1.4vw, 22px); line-height: 1.4; }
+  .support-for-self .support-step-copy > div > p { font-size: clamp(12px, 1vw, 14px); line-height: 1.4; }
+  .support-for-self .support-image-pair { display: flex; flex-direction: column; gap: 0; width: 100%; }
+  .support-for-self .support-image-pair > img { display: none; }
+  .support-for-self .support-image-pair > img.is-active { display: block; }
+  .support-image-pair-dots { display: flex; justify-content: center; align-items: center; gap: 6px; margin: 14px auto 0; }
+  .support-image-pair-dots button {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    display: grid;
+    flex: 0 0 16px;
+    place-items: center;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .support-image-pair-dots img { display: block; width: 12px; height: 12px; }
+  .support-for-self .support-image-pair-dots img {
+    width: 12px;
+    height: 12px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+  .support-for-self .support-image-pair-dots button[aria-current="true"] img { width: 14px; height: 14px; }
+  .support-image-pair-dots button:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; border-radius: 50%; }
+  .support-image-pair-dots button:active { transform: scale(.9); }
+  .support-for-self .support-reference { max-width: 1100px; margin: clamp(44px, 5vw, 64px) 0 0; }
+  .support-for-others { padding-top: clamp(36px, 5vw, 72px); }
+  .support-for-others .support-intro { gap: clamp(16px, 2vw, 28px); margin-bottom: calc(clamp(40px, 5vw, 72px) - 10px); }
+  .support-for-others .support-intro h1 { font-size: clamp(40px, 4.6vw, 68px); }
+  .support-for-others .support-intro p { max-width: none; font-size: clamp(18px, 1.5vw, 24px); }
+  .support-for-others .support-list {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(24px, 3.5vw, 60px);
+  }
+  .support-for-others .support-step { display: block; }
+  .support-for-others .support-step > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2388 / 1668;
+    margin-bottom: 30px;
+    border-radius: 30px;
+    object-fit: cover;
+  }
+  .support-for-others .support-step-copy { gap: clamp(12px, 1.6vw, 20px); padding: 0; }
+  .support-for-others .support-number { font-size: clamp(20px, 1.7vw, 28px); line-height: 1.25; }
+  .support-for-others .support-step-copy h2 { margin: 0 0 10px; font-size: clamp(18px, 1.4vw, 22px); line-height: 1.4; }
+  .support-for-others .support-step-copy > div > p { font-size: clamp(12px, 1vw, 14px); line-height: 1.4; }
+  .support-for-others .support-reference { max-width: 1100px; margin: clamp(44px, 5vw, 64px) 0 0; }
   .support-step > img,
   .support-image-pair img { height: clamp(280px, 42vh, 560px); }
   .support-image-pair { gap: 20px; }
@@ -1251,6 +1345,7 @@ body.asd-page { padding-top: 78px; background: var(--white); color: var(--green)
   }
   .asd-copy h2 { font-size: clamp(48px, 5.5vw, 82px); }
   .asd-copy p { max-width: 1100px; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; }
+  .asd-reference p { margin: 0; font: inherit; letter-spacing: inherit; }
   .asd-what-are-they { width: 100%; height: auto; min-height: 0; padding: clamp(64px, 8vw, 120px) var(--large-page-gutter); }
   .asd-tantrum { min-height: 0; }
   .asd-tantrum-copy { gap: 24px; }
@@ -1284,6 +1379,8 @@ body.asd-page { padding-top: 78px; background: var(--white); color: var(--green)
 }
 
 @media (min-width: 600px) and (max-width: 899px) {
+  .support-for-self .support-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .support-for-others .support-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .phase-diagram { transform: scale(1.35); margin-bottom: 45px; }
 }
 

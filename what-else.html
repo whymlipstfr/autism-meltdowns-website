@@ -49,7 +49,14 @@
           <div class="support-step-copy"><span class="support-number">01</span><div><h2>Move to a lower-stimulation space</h2><p>Find somewhere calmer and less crowded. This way you will have more room to both breathe and calm down.</p></div></div>
         </li>
         <li class="support-step">
-          <div class="support-image-pair"><img src="assets/meltdown-self-toolkit-1.png" alt="Headphones, a fidget cube, and a fidget toy"><img src="assets/meltdown-self-toolkit-2.png" alt="A rabbit using a weighted blanket"></div>
+          <div class="support-image-pair" role="region" aria-roledescription="carousel" aria-label="Sensory toolkit images">
+            <img class="is-active" data-support-slide="0" src="assets/meltdown-self-toolkit-1.png" alt="Headphones, a fidget cube, and a fidget toy">
+            <img data-support-slide="1" src="assets/meltdown-self-toolkit-2.png" alt="A rabbit using a weighted blanket">
+            <div class="support-image-pair-dots" role="group" aria-label="Choose a sensory toolkit image">
+              <button type="button" data-support-slide="0" aria-label="Show sensory toolkit image 1" aria-current="true" aria-pressed="true"><img src="assets/carousel-dot-pink.svg" alt=""></button>
+              <button type="button" data-support-slide="1" aria-label="Show sensory toolkit image 2" aria-current="false" aria-pressed="false"><img src="assets/carousel-dot-white.svg" alt=""></button>
+            </div>
+          </div>
           <div class="support-step-copy"><span class="support-number">02</span><div><h2>Use your sensory toolkit</h2><p>Use your noise-cancelling headphones, fidget toys and/or weighted blanket to help calm yourself down.</p></div></div>
         </li>
         <li class="support-step">
@@ -104,6 +111,7 @@
   <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
   <script src="colour-mode.js"></script>
   <script src="scroll-progress.js"></script>
+  <script src="support-carousel.js"></script>
   <script src="train-drawer.js"></script>
 </body>
 </html>
