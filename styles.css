@@ -337,7 +337,7 @@ main p { text-wrap: pretty; }
   width: 100%;
   max-width: 343px;
   height: 273px;
-  margin: 0 0 50px;
+  margin: 0 auto 50px;
 }
 .cabin-carousel-viewport {
   width: 100%;
