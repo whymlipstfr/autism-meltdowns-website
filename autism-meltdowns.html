@@ -142,9 +142,11 @@
       const description = carousel.querySelector('[data-phase-description]');
       const dots = [...carousel.querySelectorAll('[data-phase-dot]')];
       const marker = document.querySelector('[data-phase-marker]');
+      const phaseCard = carousel.querySelector('.phase-card');
       const markerPositions = [[62, 94], [104, 66], [158, 43], [174, 26], [230, 47], [258, 89]];
       const markerDistances = [0, 21, 45, 55, 80, 100];
       let activeSlide = Number(carousel.dataset.activeSlide) || 0;
+      let swipeStart = null;
 
       const showPhase = (index) => {
         activeSlide = (index + phases.length) % phases.length;
@@ -166,6 +168,21 @@
         button.addEventListener('click', () => showPhase(activeSlide + Number(button.dataset.phaseDirection)));
       });
       dots.forEach((dot) => dot.addEventListener('click', () => showPhase(Number(dot.dataset.phaseDot))));
+
+      phaseCard.addEventListener('pointerdown', (event) => {
+        if (event.pointerType === 'mouse') return;
+        swipeStart = { x: event.clientX, y: event.clientY, pointerId: event.pointerId };
+        phaseCard.setPointerCapture(event.pointerId);
+      });
+      phaseCard.addEventListener('pointerup', (event) => {
+        if (!swipeStart || swipeStart.pointerId !== event.pointerId) return;
+        const deltaX = event.clientX - swipeStart.x;
+        const deltaY = event.clientY - swipeStart.y;
+        swipeStart = null;
+        if (Math.abs(deltaX) < 40 || Math.abs(deltaX) < Math.abs(deltaY) * 1.2) return;
+        showPhase(activeSlide + (deltaX < 0 ? 1 : -1));
+      });
+      phaseCard.addEventListener('pointercancel', () => { swipeStart = null; });
       showPhase(activeSlide);
     })();
   </script>
